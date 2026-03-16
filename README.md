@@ -78,15 +78,9 @@ WHERE sale_date = '2022-11-05';
 
 2. **Retrieve all transactions where the category is 'Clothing' and the quantity sold is more than 4 in the month of Nov-2022**:
 ```sql
-SELECT 
-  *
+SELECT transactions_id,	sale_date, category, quantity
 FROM retail_sales
-WHERE 
-    category = 'Clothing'
-    AND 
-    TO_CHAR(sale_date, 'YYYY-MM') = '2022-11'
-    AND
-    quantity >= 4
+WHERE category = 'Clothing' AND TO_CHAR(sale_date, 'YYYY-MM')= '2022-11' AND quantity >= 4;
 ```
 
 3. **Calculate the total sales (total_sale) for each category.**:
