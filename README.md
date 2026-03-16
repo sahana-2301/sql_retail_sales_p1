@@ -71,8 +71,7 @@ The following SQL queries were developed to answer specific business questions:
 
 1. **Retrieve all columns for sales made on '2022-11-05**:
 ```sql
-SELECT *
-FROM retail_sales
+SELECT * FROM retail_sales
 WHERE sale_date = '2022-11-05';
 ```
 
@@ -85,40 +84,31 @@ WHERE category = 'Clothing' AND TO_CHAR(sale_date, 'YYYY-MM')= '2022-11' AND qua
 
 3. **Calculate the total sales (total_sale) for each category.**:
 ```sql
-SELECT 
-    category,
-    SUM(total_sale) as net_sale,
-    COUNT(*) as total_orders
+SELECT category, SUM(total_sale) AS net_sale, COUNT(*) AS total_order
 FROM retail_sales
-GROUP BY 1
+GROUP BY 1;
 ```
 
 4. **Find the average age of customers who purchased items from the 'Beauty' category.**:
 ```sql
-SELECT
-    ROUND(AVG(age), 2) as avg_age
-FROM retail_sales
-WHERE category = 'Beauty'
+SELECT ROUND(AVG(age), 2) AS avg_age FROM retail_sales
+WHERE category = 'Beauty';
 ```
 
 5. **Find all transactions where the total_sale is greater than 1000.**:
 ```sql
-SELECT * FROM retail_sales
-WHERE total_sale > 1000
+SELECT *
+FROM retail_sales
+WHERE total_sale > 1000;
+
 ```
 
 6. **Find the total number of transactions (transaction_id) made by each gender in each category.**:
 ```sql
-SELECT 
-    category,
-    gender,
-    COUNT(*) as total_trans
+SELECT category, gender, COUNT(*) AS total_trans
 FROM retail_sales
-GROUP 
-    BY 
-    category,
-    gender
-ORDER BY 1
+GROUP BY gender, category
+ORDER BY 1;
 ```
 
 7. **Calculate the average sale for each month. Find out best selling month in each year**:
@@ -142,20 +132,16 @@ WHERE rank = 1
 
 8. **Write a SQL query to find the top 5 customers based on the highest total sales **:
 ```sql
-SELECT 
-    customer_id,
-    SUM(total_sale) as total_sales
+SELECT customer_id, SUM(total_sale) AS total_sales
 FROM retail_sales
 GROUP BY 1
 ORDER BY 2 DESC
-LIMIT 5
+LIMIT 5;
 ```
 
 9. **Find the number of unique customers who purchased items from each category.**:
 ```sql
-SELECT 
-    category,    
-    COUNT(DISTINCT customer_id) as cnt_unique_cs
+SELECT category, COUNT(DISTINCT customer_id) as cnt_unique_cs
 FROM retail_sales
 GROUP BY category
 ```
